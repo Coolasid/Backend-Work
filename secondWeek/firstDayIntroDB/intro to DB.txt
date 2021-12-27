@@ -1,0 +1,121 @@
+> Intro to mongo cmd=>
+
+> db>collections>document>field:value
+
+> to get database of our comp
+> show databases  or >show dbs
+
+
+
+> to create database use=>
+> use assignment
+> here assignment is name of database and it may be diff.
+
+
+> to get all collections from ur database use=>
+> show collections
+
+
+> if u don't know  commend just use=>
+> db.help()
+
+
+> if we want to create collection inside database use=>
+> db.users.insert({name: "Siddesh"})
+> here users and name is just random
+
+
+> CRUD=>
+> C = create / post
+> R = read / get
+> U = update / post or patch
+> D = delete / delete
+
+
+
+
+> for creating document in collection=>
+> db.users.insert({ firstName: "Siddesh", lastName: "Patil", email: "siddeshp388@gmail.com", gender: "M", ipAddress: "127:025:365", age: "21"})
+
+
+>for inserting many documents in collection at one time use=>
+> db.users.insertMany([{},{},{}])
+> db.users.insertMany([{firstName: "Ankush", lastName: "Patil", email: "ankup388@gmail.com", gender: "M", ipAddress: "127:025:535", age: "20"}, {firstName: "Aniket", lastName: "Mahajan", email: "annuM388@gmail.com", gender: "M", ipAddress: "262:025:3255", age: "23"}, {firstName: "Aayush", lastName: "Choudhary", email: "aayuC388@gmail.com", gender: "M", ipAddress: "127:025:255", age: "19"}, {firstName: "Gaurav", lastName: "Patil", email: "gavp388@gmail.com", gender: "M", ipAddress: "127:025:455", age: "24"}, {firstName: "Master", lastName: "Mahajan", email: "mattiM388@gmail.com", gender: "M", ipAddress: "127:025:869", age: "20"}])
+
+
+
+
+
+
+
+> to read the documents we use find=>
+> db.users.find();
+> db.users.find().pretty() => this will give us data in pretty way
+
+
+> if we want to find a document which matches first with our cond=>
+> db.users.findOne({firstName: "Ankush"});
+
+
+> if we want to find a specific document so we use=>
+> db.users.find({firstName: "Siddesh"}).pretty();
+
+> we can find a perticular document by ID =>
+> db.users.find({ "_id" : ObjectId("61c9c76b6fafefd7502a228c")})
+
+
+
+
+
+
+> for update we use =>
+> db.users.update({firstName: "Sarang"}, { $set: {firstName: "Shivam"}})
+> $set => will update a specific field and we can add another field in that document also
+
+> we have to search by using ID 
+
+> if we want to update many document in one line we use =>
+> db.users.updateMany({firstName: "Ankush"}, { $set: {lastName: "Bharti" }})
+> here updateMany will update all the ankush lastName to Bharti
+
+> if we want to remove any field form document use =>
+> db.users.update({firstName: "Siddesh"}, {$unset: {lastName:1}})
+> if we put empty obj  and do updateMany in above cmd then it matches with all the documents and removes all the lastName;
+
+
+
+
+
+
+
+
+
+> if you want to delete document use=>
+> db.users.remove({firstName: "Master"})
+> remove document using ID ONLY.
+
+> if we want to remove specific numbers of documents=>
+> db.users.remove({ firstName: "Ankush"}, 2)
+
+
+
+> if we want to use delete cmd use=>
+> db.users.deleteOne({firstName:"Siddesh"})
+> if we want to use delete all documents use=>
+> db.users.deleteMany({})
+
+
+
+> if we want to delete database use=>
+> db.dropDatabase()
+
+
+
+
+
+
+
+
+
+
+
