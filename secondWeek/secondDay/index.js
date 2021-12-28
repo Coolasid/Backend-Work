@@ -43,7 +43,7 @@ app.get("/movie", async (req, res)=>{
     let movies = await Movie.find().lean().exec() 
     //db.movie => mongoose object , lean() convets mongoos object to json obj and exec() return full promise 
     // console.log(movie);
-    return res.send(movies);
+    return res.send(movies );
 });
 
 
