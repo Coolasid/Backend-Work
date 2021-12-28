@@ -1,0 +1,169 @@
+// Facebook: - https://masai-course.s3.ap-south-1.amazonaws.com/users/742/submissions/107510/253457/725d20b569eaa514278acfd124524994/demo.mp4
+// Myntra: - https://masai-course.s3.ap-south-1.amazonaws.com/users/745/submissions/107541/253490/d1b2455660a2b88d71cdf301f98dcc2f/zoom_2.mp4
+// Linkedin Learning: - https://masai-course.s3.ap-south-1.amazonaws.com/users/778/submissions/107505/253450/75c61822e00a360643f27eb52f5656cf/zoom_2.mp4
+// Instagram: - https://masai-course.s3.ap-south-1.amazonaws.com/users/806/submissions/107528/253477/d28b85bee79eef87fd2a8913d6fee1c0/zoom_8.mp4
+
+
+
+> first of all I take the data from website then make a database in mongo compass as movieAssignment and after created collection name movie
+
+
+
+
+///////////eq and ne///////////////
+
+to find the document of perticular movie name use=>
+> db.movie.find({ movieName: { $eq: "Deux mondes, Les"}}).pretty()
+
+to find the document of perticular movie name which is not equal too movieName=>
+> db.movie.find({ movieName: { $ne: "Deux mondes, Les"}}).pretty();
+and if we want to check its count use =>
+> db.movie.find({ movieName: { $ne: "Deux mondes, Les"}}).count();
+
+
+
+
+//////////gt and gte///////////////
+
+
+to find the movie whose budget is greater then  12000 than use =>
+> db.movie.find({ budget: { $gt: 12000}}).pretty();
+
+to find the movie whose budget is greater then and equal to  12000 than use =>
+> db.movie.find({ budget: { $gte: 12000}}).pretty();
+
+
+
+//////// lt and lte//////////
+
+
+to find the movie whose budget is lower then  12000 than use =>
+> db.movie.find({ budget: { $lt: 12000}}).pretty();
+
+to find the movie whose budget is lower then or equal to 12000 than use =>
+> db.movie.find({ budget: { $lte: 12000}}).pretty();
+
+
+
+
+///////// If we want to a specific field then use ///////////
+
+> db.movie.find({ budget: { $eq : 10000}}, { movieName: 1, movie_genre: 1, _id: 0}).pretty()
+
+
+
+////// LOGICAL OPERATORS ///////////=>
+
+
+/////// and Operator //////////
+
+for and both the field will have to be true for the document to come in result for that use=>
+
+find all movies that produced after 2000 and with budget greater then 10000 for that use=>
+> db.movie.find({ $and: [ { production_year: { $gt: 2000}}, { budget: { $gt: 10000} } ]}).pretty();
+
+
+
+
+/////////// or Operator ///////////////
+
+for or if any one of the field is true then document will be shown for that use=>
+
+find all movies that are produced after 2000 or budget greater than 10000
+> db.movie.find({ $or: [ {production_year: { $gt: 2000}}, {budget: {$gt: 10000} } ]})
+
+
+
+/////////// nor Operator////////////////
+
+
+if the field is present in the document the it is failed to use =>
+
+find all movies that are neither produced after 2000 nor with budget greater than 10000.=>
+> db.movie.find({ $nor: [ {production_year: { $gt: 2000}}, {budget: { $gt: 10000}} ]})
+
+
+
+/////////////not//////////////
+
+find all movies that are not produced in 2000 or they do not have budget of 10000
+> db.movie. find({ $or: [ { production_year: { $not: {$eq: 2000}}}, { budget: { $not: { $eq: 10000}}} ]})
+here we are finding or of not equal of 2000 and 10000, not is giving other value then equal
+
+
+
+
+
+///////// in Operator ////////////
+
+it is works like range or if we want to find any of the value in field we can use it like=>
+> db.movie.find({ production_year: { $in: [2005, 2012]}}).pretty()
+here I got all the document which has production_year of 2005 and 2012
+
+
+///////// exist //////////
+
+if we want to check that the field is exist or not then use=>
+> db.movie.find({budget: { $exist: true, $in: [10000, 12000]}})
+it check if the budget field is exist or not it saves our time;
+
+
+////////// range /////////////
+
+find all movies that were produced from 2000 to 2010 for that use=>
+> db.movie.find({production_year: { $gte: 2000 , $lt: 2010} }).pretty();
+
+
+
+/////////// limit ///////
+
+if we want to limit the find then use=>
+> db.movie.find().limit(10).pretty();
+it will give me first 10 documents from my db;
+
+
+////// skip /////////
+
+if we don't want specific numbers of documents then we can use=>
+> db.movie.find().skip(5).limit(10)
+it will skip first 5 documents form first and gives next 10 documents to us
+
+
+in query 10 skip the first 10 entries and fetch the next 5 use =>
+> db.movie.find().skip(10).limit(5);
+
+
+////////// sorting /////////
+
+Sort all movies ascending based on the production year and if the year is same then alphabetically for their movie_names
+> db.movie.find().sort({ movieName: 1}).pretty()
+
+
+Sort all movies descending based on the production year and if the year is same then alphabetically for their movie_names
+> db.movie.find().sort({ movieName: -1}).pretty();
+
+
+
+if we have to do sorting based on two fields then use =>
+> db.movie.find({budget: { $gt: 10000, $lt: 12000}}).sort({budget: 1, production_year: 1}).pretty();
+
+it will give result bt 10000 to  12000 and sort on their budget ascending and if their budget is same then it will sort them on the bases on production_year
+
+
+
+///////// if we want to delete any field from documents ////////////
+
+remove movie genre from the first 10 movies in query 10 use=>
+> db.movie.updateMany({id: { $gte: 1, $lte: 10}},{ $unset: {movie_genre: 1}})
+
+
+
+
+
+
+
+
+
+
+
+
