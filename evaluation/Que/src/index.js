@@ -41,7 +41,7 @@ const moreThen3col = require("./controllers/querys/3rd moreThen 3colors");
 app.use("/moreThen3Col", moreThen3col)
 
 
-//------------find all the products which have atleast 1 colour that matches.----------
+//------------4th find all the products which have atleast 1 colour that matches.----------
 
 const oneColMatch = require("./controllers/querys/4th oneColorMatch");
 

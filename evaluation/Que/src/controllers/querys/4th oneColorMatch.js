@@ -8,7 +8,7 @@ const Product = require("../../models/productModel");
 
 
 
-router.get("", async(req, res)=>{
+router.get("/:id", async(req, res)=>{
 
     try {
         
@@ -16,16 +16,28 @@ router.get("", async(req, res)=>{
 
         totalProducts = 0;
 
+        const arr = [];
+
         products.forEach((el)=>{
 
-         let prod =   +el.colors;
-         console.log(prod);
+         let colorIdArr =   el.colorIds;
+        //  console.log(req.params.id);
 
-            totalProducts += prod;
+        for(var i = 0; i < colorIdArr.length; i++){
+
+            if( colorIdArr[i] === `new ObjectId("${req.params.id}")`){
+                
+                arr.push(el);
+            }
+            // console.log(colorIdArr[i]);
+            // console.log(`new ObjectId("${req.params.id}")`)
+
+        }
         })
 
+        // console.log(arr);
         
-        return res.status(200).send({totalProducts})
+        return res.status(200).send({arr})
 
     } catch (e) {
         return res.status(500).send(e.message)
