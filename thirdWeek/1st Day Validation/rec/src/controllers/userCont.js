@@ -16,6 +16,7 @@ router.post(
   body("ipAddress").isLength({ min: 1 }),
   body("age").isLength({ min: 1 }),
   async (req, res) => {
+      
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
