@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
 
     destination: (req, file, callback) =>{
 
-        callback(null, path.join(__dirname, "../upload"))
+        callback(null, path.join(__dirname, "../uploads"));
 
     },
     filename: (req, file, callback)=>{
@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
 
 const fileFilter = (req, file, callback)=>{
 
-    if( file.mimetype === "image/jpeg" || file.mimetype === "image/png"){
+    if( file.mimetype === "image/jpeg" || file.mimetype === "image/jpg"){
 
         callback(null, true)
 
