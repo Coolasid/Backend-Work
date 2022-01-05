@@ -6,3 +6,8 @@ app.use(express.json());
 
 
 module.exports = app;
+
+
+const productCont = require("./controllers/productCont");
+
+app.use("/products", productCont);
