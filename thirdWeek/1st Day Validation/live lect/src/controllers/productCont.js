@@ -94,15 +94,17 @@ router.patch(
     .withMessage("User Id is required")
     .custom(async (value, {req}) => {
       try {
+          //only the user created the product can update the product.
+
         const user = await User.findById(value).lean().exec();
 
-        if (!user) return Promise.reject("User dose not exist");
+        if (!user) return Promise.reject("User dose not exist");//is the user exist or not
 
         const product = await Product.findById(req.params.id).lean().exec();
 
-        if(!product) return Promise.reject("Product dose not exist");
+        if(!product) return Promise.reject("Product dose not exist");//is the product exist or not
 
-        if( product.userId !== user._id) return Promise.reject("This user is not allowed to update the product")
+        if( !product.userId.equals( user._id)) return Promise.reject("This user is not allowed to update the product") //comparing the before product user id and the user Id that we passed now to change the product
 
         return true;
       } catch (e) {

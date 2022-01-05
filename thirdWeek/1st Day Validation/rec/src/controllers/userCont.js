@@ -11,7 +11,7 @@ router.post(
   body("id").isLength({ min: 1 }),
   body("firstName").isLength({ min: 1 }),
   body("lastName").isLength({ min: 1 }),
-  body("email").isEmail,
+  body("email").isEmail(),
   body("gender").isLength({ min: 1 }),
   body("ipAddress").isLength({ min: 1 }),
   body("age").isLength({ min: 1 }),
