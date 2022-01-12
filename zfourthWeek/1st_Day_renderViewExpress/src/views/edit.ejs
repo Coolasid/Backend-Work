@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+</head>
+<body>
+
+    <h1>Edit User</h1>
+    <form action="/users/<%= user._id %>" method="patch">
+      <div>
+        <label for="firstName">First Name</label>
+        <input type="text" value="<%= user.firstName %>" name="firstName" id="firstName" />
+      </div>
+      <div>
+        <label for="lastName">Last Name</label>
+        <input type="text" value="<%= user.lastName %>" name="lastName" id="lastName" />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" value="<%= user.email %>" name="email" id="email" />
+      </div>
+      <div>
+        <label for="age">Age</label>
+        <input type="number" value="<%= user.age %>" name="age" id="age" />
+      </div>
+      <div>
+        <input type="submit" value="Submit Button" name="submit" />
+      </div>
+    </form>
+    
+</body>
+</html>

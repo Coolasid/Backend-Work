@@ -1,5 +1,5 @@
 
- const getAll = (model) => async(req, res)=>{
+ const getAll = (model, page) => async(req, res)=>{
 
     try {
 
@@ -7,7 +7,11 @@
 
         // return res.status(200).send(items);
 
-         return res.render("index")
+         return res.render(page, {
+
+            items: items,
+
+         } )
         
     } catch (e) {
 
@@ -20,6 +24,8 @@
  const post = (model) => async(req, res)=>{
 
     try {
+
+        console.log(req.body);
 
         const item = await model.create(req.body);
 
@@ -46,12 +52,16 @@
 
  }
 
- const updateOne = (model)=> async(req, res)=>{
+ const updateOne = (model, page)=> async(req, res)=>{
 
     try {
         const item = await model.findByIdAndUpdate(req.params.id, req.body, {new: true}).lean().exec();
 
-        return res.status(200).send(item);
+        // return res.status(200).send(item);
+
+        const items = await model.find().lean().exec();
+
+        return res.render(page, {items: items})
         
     } catch (e) {
         return res.status(500).send(e.message);
@@ -79,7 +89,7 @@
     get: getAll(model, page),
     post: post(model),
     getOne: getOne(model),
-    updateOne: updateOne(model),
+    updateOne: updateOne(model, page),
     deleteOne: deleteOne(model)
     
  });
