@@ -9,7 +9,7 @@
 <body>
 
     <h1>Edit User</h1>
-    <form action="/users/<%= user._id %>" method="patch">
+    <form action="/users/<%= user._id %>" method="patch" onsubmit="updateSubmitH()">
       <div>
         <label for="firstName">First Name</label>
         <input type="text" value="<%= user.firstName %>" name="firstName" id="firstName" />
@@ -27,9 +27,12 @@
         <input type="number" value="<%= user.age %>" name="age" id="age" />
       </div>
       <div>
+        
         <input type="submit" value="Submit Button" name="submit" />
       </div>
     </form>
     
 </body>
 </html>
+
+<script src="../public/js/index.js"></script>
