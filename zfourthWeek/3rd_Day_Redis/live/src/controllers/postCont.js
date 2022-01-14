@@ -141,6 +141,51 @@ router.delete("/:id",  (req, res) => {
 });
 
 
+router.post("/:id/likes", (req, res)=>{
+
+  try {
+
+    redis.get(`posts.${req.params.id}.likes`, async function(err, likeCount){
+
+      if(err) console.log(err.message);;
+
+      const post = await Post.findById(req.params.id).lean().exec();
+
+      if(likeCount){
+
+        likeCount = +likeCount;
+
+        likeCount += 1;
+
+        redis.set(`posts.${req.params.id}.likes`, likeCount);
+
+        post.likes = likeCount;
+
+        return res.status(201).send({post, redis:true})
+
+      }else{
+
+        likeCount = 1;
+        redis.set(`posts.${req.params.id}.likes`, likeCount);
+
+        post.likes = likeCount;
+
+        return res.status(201).send({post, redis:false});
+
+      }
+
+
+    })
+    
+  } catch (e) {
+    return res.status(500).send(e.message)
+  }
+
+
+
+})
+
+
 
 
 module.exports = router;

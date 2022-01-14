@@ -22,3 +22,16 @@
 [5932] 14 Jan 22:40:35.108 * Background saving started by pid 10644
 [5932] 14 Jan 22:40:35.411 # fork operation complete
 [5932] 14 Jan 22:40:35.411 * Background saving terminated with success
+[5932] 14 Jan 23:05:39.227 * 1 changes in 900 seconds. Saving...
+[5932] 14 Jan 23:05:39.250 * Background saving started by pid 19232
+[5932] 14 Jan 23:05:39.754 # fork operation complete
+[5932] 14 Jan 23:05:39.754 * Background saving terminated with success
+[5932] 14 Jan 23:20:40.079 * 1 changes in 900 seconds. Saving...
+[5932] 14 Jan 23:20:40.096 * Background saving started by pid 14036
+[5932] 14 Jan 23:20:40.599 # fork operation complete
+[5932] 14 Jan 23:20:40.600 * Background saving terminated with success
+[5932] 14 Jan 23:26:21.342 * DB saved on disk
+[5932] 14 Jan 23:37:37.335 * 10 changes in 300 seconds. Saving...
+[5932] 14 Jan 23:37:37.339 * Background saving started by pid 9212
+[5932] 14 Jan 23:37:37.741 # fork operation complete
+[5932] 14 Jan 23:37:37.741 * Background saving terminated with success
