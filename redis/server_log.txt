@@ -20,3 +20,5 @@
 [5932] 14 Jan 22:25:34.400 * Background saving terminated with success
 [5932] 14 Jan 22:40:35.074 * 1 changes in 900 seconds. Saving...
 [5932] 14 Jan 22:40:35.108 * Background saving started by pid 10644
+[5932] 14 Jan 22:40:35.411 # fork operation complete
+[5932] 14 Jan 22:40:35.411 * Background saving terminated with success
